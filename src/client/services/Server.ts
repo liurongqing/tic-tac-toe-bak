@@ -39,14 +39,8 @@ export class Server {
 
     // 有人断开链接
     this.room.onLeave((code) => {
-      console.log('code', code)
-      alert('leave')
+      console.log('对方已离开房间，你胜利了', code)
     })
-
-    // this.room.onError((code, message) => {
-    //   console.log('oops, error ocurred:', code)
-    //   console.log(message)
-    // })
 
     this.room.state.onChange = (changes) => {
       changes.forEach((change) => {
@@ -90,7 +84,7 @@ export class Server {
     if (this.room.state.gameState !== GameState.Playing) {
       return
     }
-    console.log('roommmm', this.room)
+    // console.log('roommmm', this.room)
     if (this.playerIndex !== this.room?.state.activePlayer) {
       console.warn('当前为对方下子')
       return

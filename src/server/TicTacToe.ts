@@ -33,4 +33,9 @@ export class TicTacToe extends Room {
       this.lock()
     }
   }
+
+  onLeave(client: Client, consented: any) {
+    // 有人离开，则另一家胜利
+    this.state.winningPlayer = this.state.activePlayer === 0 ? 1 : 0
+  }
 }
